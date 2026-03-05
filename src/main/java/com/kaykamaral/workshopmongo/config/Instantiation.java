@@ -15,11 +15,14 @@ public class Instantiation implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        userRepository.deleteAll(); // Limpa para garantir o teste
 
-        User maria = new User(null, "Kayk", "kayk@gmail.com");
-        userRepository.saveAll(Arrays.asList(maria));
+        userRepository.deleteAll();
 
-        System.out.println(">>> DADO INSERIDO PELO JAVA COM SUCESSO! <<<");
+        User maria = new User(null, "Maria Brown", "maria@gmail.com");
+        User alex = new User(null, "Alex Green", "alex@gmail.com");
+        User bob = new User(null, "Bob Grey", "bob@gmail.com");
+
+        userRepository.saveAll(Arrays.asList(maria, alex, bob));
+
     }
 }
