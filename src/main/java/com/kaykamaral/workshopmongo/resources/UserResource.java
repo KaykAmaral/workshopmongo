@@ -1,5 +1,6 @@
 package com.kaykamaral.workshopmongo.resources;
 
+import com.kaykamaral.workshopmongo.domain.Post;
 import com.kaykamaral.workshopmongo.domain.User;
 import com.kaykamaral.workshopmongo.dto.UserDTO;
 import com.kaykamaral.workshopmongo.services.UserService;
@@ -53,6 +54,12 @@ public class UserResource {
     public ResponseEntity<Void> delete(@PathVariable String id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value="{id}/posts", method=RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 
 }
